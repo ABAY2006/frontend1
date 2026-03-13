@@ -1,10 +1,12 @@
 
+const BASE_URL = "https://b-qbzi.onrender.com";
+
 async function signup(){
 
 let username=document.getElementById("su_user").value
 let password=document.getElementById("su_pass").value
 
-let res=await fetch("/signup",{
+let res=await fetch(BASE_URL + "/signup",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({username,password})
@@ -22,7 +24,7 @@ async function login(){
 let username=document.getElementById("li_user").value
 let password=document.getElementById("li_pass").value
 
-let res=await fetch("/login",{
+let res=await fetch(BASE_URL + "/login",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({username,password})
@@ -47,7 +49,7 @@ let file=document.getElementById("plantImage").files[0]
 let formData=new FormData()
 formData.append("image",file)
 
-let res=await fetch("/predict",{
+let res=await fetch(BASE_URL + "/predict",{
 method:"POST",
 body:formData
 })
