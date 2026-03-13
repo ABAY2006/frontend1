@@ -6,6 +6,11 @@ async function signup(){
 const username=document.getElementById("su_user").value
 const password=document.getElementById("su_pass").value
 
+if(!username || !password){
+alert("Enter username and password")
+return
+}
+
 const res=await fetch(API+"/signup",{
 method:"POST",
 headers:{
