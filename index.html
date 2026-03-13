@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Med Plant</title>
-<link rel="stylesheet" href="style.css">
+<title>MedPlant AI</title>
+<link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
-<h1>Medicinal Plant Identifier</h1>
+<div class="container">
 
-<div class="box">
+<h1>🌿 MedPlant AI</h1>
+
+<div id="auth">
 
 <h2>Signup</h2>
 <input id="su_user" placeholder="Username">
@@ -24,7 +25,27 @@
 
 </div>
 
-<script src="script.js"></script>
+<div id="app" style="display:none">
+
+<h2>Upload Plant Image</h2>
+
+<input type="file" id="plantImage">
+
+<button onclick="upload()">Predict Plant</button>
+
+<div id="result">
+
+<h3 id="plantName"></h3>
+<p id="desc"></p>
+<p id="med"></p>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="/static/script.js"></script>
 
 </body>
 </html>
