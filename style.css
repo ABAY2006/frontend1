@@ -4,14 +4,10 @@ background:#e8f5e9;
 text-align:center;
 }
 
-h1{
-color:#2e7d32;
-}
-
 .box{
 background:white;
-width:320px;
-margin:20px auto;
+width:300px;
+margin:auto;
 padding:20px;
 border-radius:10px;
 box-shadow:0 0 10px gray;
@@ -30,8 +26,4 @@ color:white;
 border:none;
 padding:10px;
 cursor:pointer;
-}
-
-#result{
-margin-top:20px;
 }
