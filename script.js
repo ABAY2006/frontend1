@@ -1,59 +1,61 @@
-const API = "https://b-qbzi.onrender.com";
 
 async function signup(){
 
-const username = document.getElementById("su_user").value
-const password = document.getElementById("su_pass").value
+let username=document.getElementById("su_user").value
+let password=document.getElementById("su_pass").value
 
-if(!username || !password){
-alert("Enter username and password")
-return
-}
-
-try{
-
-const res = await fetch(API + "/signup",{
+let res=await fetch("/signup",{
 method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-username:username,
-password:password
-})
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({username,password})
 })
 
-const data = await res.json()
+let data=await res.json()
 
-alert(data.message)
-
-}catch(error){
-
-alert("Signup failed")
-console.log(error)
+alert(data.status)
 
 }
 
-}
 
 async function login(){
 
-const username = document.getElementById("li_user").value
-const password = document.getElementById("li_pass").value
+let username=document.getElementById("li_user").value
+let password=document.getElementById("li_pass").value
 
-const res = await fetch(API + "/login",{
+let res=await fetch("/login",{
 method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-username:username,
-password:password
-})
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({username,password})
 })
 
-const data = await res.json()
+let data=await res.json()
 
-alert(data.message)
+if(data.status==="success"){
+document.getElementById("auth").style.display="none"
+document.getElementById("app").style.display="block"
+}else{
+alert("Invalid login")
+}
+
+}
+
+
+async function upload(){
+
+let file=document.getElementById("plantImage").files[0]
+
+let formData=new FormData()
+formData.append("image",file)
+
+let res=await fetch("/predict",{
+method:"POST",
+body:formData
+})
+
+let data=await res.json()
+
+document.getElementById("plantName").innerText="Scientific Name: "+data.name
+document.getElementById("desc").innerText=data.description
+document.getElementById("med").innerText="Medicinal Value: "+data.medicinal
 
 }
