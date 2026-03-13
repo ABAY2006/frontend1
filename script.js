@@ -1,4 +1,4 @@
-const API = "";
+const API = "https://backend1-0um3.onrender.com";
 
 // SIGNUP
 async function signup(){
